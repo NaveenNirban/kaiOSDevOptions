@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <title>KaiOS Guide</title>
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width">
+    <meta name="author" content="Mr. R0801">
+    <meta name="description" content="KaiOS Developer mode access">
+    <meta name="keywords" content="jailbreak,mobile,research,hacking,js,kaios">
+  </head>
+  <body>
+    <header>
+      <h1>KaiOS Developer Mode Access</h1>
+    </header>
+    <main>
+      <section>
+        <button id="w2d">Launch Developer menu</button>
+      </section>
+    </main>
+    <footer>
+      <hr>
+      <p>© 2022 — present<br>credits to  Mr. R0801</p>
+    </footer>
+    <script>
+      document.getElementById('w2d').addEventListener('click', function(e) {
+        if(window.MozActivity) {
+          var act = new MozActivity({
+            name: "configure",
+            data: {
+              target: "device",
+              section: "developer"
+            }
+          })
+        } else if(window.WebActivity) { // KaiOS 3.0
+		  var act = new WebActivity("configure", {
+			target: "device",
+			section: "developer"
+		  })
+		  act.start().catch(function(e){window.alert('Cannot launch developer menu: ' + e)})
+		} else {
+          window.alert('Please open the page from the device itself!')
+        }
+      }, false)
+    </script>
+</body></html>
